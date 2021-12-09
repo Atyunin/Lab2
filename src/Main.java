@@ -15,8 +15,8 @@ class Main
         User alice = new User("Alice", generator, primemodulus, message);
         User bob = new User("Bob", generator, primemodulus);
 
-        BigInteger keyAlice = alice.GetKey(bob.prime);
-        BigInteger keyBob = bob.GetKey(alice.prime);
+        BigInteger keyAlice = alice.GetKey(bob.public_key);
+        BigInteger keyBob = bob.GetKey(alice.public_key);
 
         System.out.println("Ключ Алисы: " + keyAlice + " Ключ Боба: " + keyBob);
 

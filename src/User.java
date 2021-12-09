@@ -9,7 +9,7 @@ class User
     private int primemodulus;
 
     private BigInteger secret;
-    public int prime;
+    public int public_key;
 
 
     public User(String name, int generator, int primemodulus, String message)
@@ -18,8 +18,8 @@ class User
         this.primemodulus = primemodulus;
         this.message = message;
         this.generator = generator;
-        prime = diffieHellman.PrimeNumber;
-        secret = diffieHellman.GetKey(this.generator, this.primemodulus, prime);
+        public_key = diffieHellman.PrimeNumber;
+        secret = diffieHellman.GetKey(this.generator, this.primemodulus, public_key);
     }
 
     public User(String name, int generator, int primemodulus) {
@@ -27,9 +27,9 @@ class User
         this(name, generator, primemodulus, "");
     }
 
-    public BigInteger GetKey(int prime)
+    public BigInteger GetKey(int public_key)
     {
-        BigInteger g = secret.pow(prime);
+        BigInteger g = secret.pow(public_key);
         BigInteger Chave = g.mod(new BigInteger(Integer.toString(primemodulus)));
 
         return Chave;
